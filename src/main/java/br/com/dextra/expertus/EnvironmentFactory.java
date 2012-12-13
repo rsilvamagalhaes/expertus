@@ -17,6 +17,10 @@ import br.com.dextra.expertus.environment.SauceLocalEnvironment;
  */
 public class EnvironmentFactory {
 
+	/**
+	 * System property which define environment type. Valid values at
+	 * EnvironmentType.
+	 */
 	protected static String ENVIRONMENT_TYPE_PROPERTY = "expertus.environment.type";
 
 	public static Environment createEnvironment(EnvironmentType type) {
@@ -24,8 +28,9 @@ public class EnvironmentFactory {
 	}
 
 	/**
-	 * This method create an environment according to the ENVIRONMENT_TYPE_PROPERTY system property value. You
-	 * can check the valid values at EnvironmentType.
+	 * This method create an environment according to the
+	 * ENVIRONMENT_TYPE_PROPERTY system property value. You can check the valid
+	 * values at EnvironmentType.
 	 * 
 	 * @see EnvironmentType
 	 * @return A new instance of an Environment according to to the
