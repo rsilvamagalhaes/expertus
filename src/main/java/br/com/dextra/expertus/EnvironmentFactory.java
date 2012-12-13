@@ -8,15 +8,35 @@ import br.com.dextra.expertus.environment.SauceCloudEnvironment;
 import br.com.dextra.expertus.environment.SauceLocalEnvironment;
 
 /**
- * A factory to create a new environment. See the EnvironmentType class to get all options.
+ * A factory to create a new environment. See the EnvironmentType class to get
+ * all options.
  * 
  * @see EnvironmentType
- *
+ * 
  * @author leandro.guimaraes
  */
 public class EnvironmentFactory {
 
+	protected static String ENVIRONMENT_TYPE_PROPERTY = "expertus.environment.type";
+
 	public static Environment createEnvironment(EnvironmentType type) {
+		return getNewEnvironment(type);
+	}
+
+	/**
+	 * This method create an environment according to the ENVIRONMENT_TYPE_PROPERTY system property value. You
+	 * can check the valid values at EnvironmentType.
+	 * 
+	 * @see EnvironmentType
+	 * @return A new instance of an Environment according to to the
+	 *         ENVIRONMENT_TYPE_PROPERTY system property value.
+	 */
+	public static Environment createEnvironment() {
+		String type = System.getProperty(ENVIRONMENT_TYPE_PROPERTY);
+		return getNewEnvironment(EnvironmentType.valueOf(type));
+	}
+
+	private static Environment getNewEnvironment(EnvironmentType type) {
 		switch (type) {
 		case local:
 			return new LocalEnvironment();

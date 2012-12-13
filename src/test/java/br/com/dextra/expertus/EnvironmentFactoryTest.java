@@ -26,4 +26,22 @@ public class EnvironmentFactoryTest {
 		Assert.assertTrue(EnvironmentFactory.createEnvironment(EnvironmentType.sauceCloud) instanceof SauceCloudEnvironment);
 	}
 
+	@Test
+	public void testLocalBySystemProperty() {
+		System.setProperty(EnvironmentFactory.ENVIRONMENT_TYPE_PROPERTY, "local");
+		Assert.assertTrue(EnvironmentFactory.createEnvironment() instanceof LocalEnvironment);
+	}
+
+	@Test
+	public void testSauceLocalBySystemProperty() {
+		System.setProperty(EnvironmentFactory.ENVIRONMENT_TYPE_PROPERTY, "sauceLocal");
+		Assert.assertTrue(EnvironmentFactory.createEnvironment(EnvironmentType.sauceLocal) instanceof SauceLocalEnvironment);
+	}
+
+	@Test
+	public void testSauceCloudBySystemProperty() {
+		System.setProperty(EnvironmentFactory.ENVIRONMENT_TYPE_PROPERTY, "sauceCloud");
+		Assert.assertTrue(EnvironmentFactory.createEnvironment(EnvironmentType.sauceCloud) instanceof SauceCloudEnvironment);
+	}
+
 }
