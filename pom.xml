@@ -52,6 +52,54 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
         <mycontainer.version>1.2.37</mycontainer.version>
     </properties>
  
+ 	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>local</name>
+				</property>
+			</activation>
+			<properties>
+				<expertus.environment.type>local</expertus.environment.type>
+				<expertus.environment.local.test>true</expertus.environment.local.test>
+				<expertus.environment.browser>FIREFOX</expertus.environment.browser>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>sauceLocal</id>
+			<activation>
+				<property>
+					<name>sauceLocal</name>
+				</property>
+			</activation>
+			<properties>
+				<expertus.environment.type>sauceLocal</expertus.environment.type>
+				<expertus.environment.local.test>false</expertus.environment.local.test>
+				<expertus.environment.sauce.platform>Linux</expertus.environment.sauce.platform>
+				<expertus.environment.browser>FIREFOX</expertus.environment.browser>
+				<expertus.environment.sauce.browser.version>17</expertus.environment.sauce.browser.version>
+				<expertus.environment.sauce.username>cloudbees_dextra-con</expertus.environment.sauce.username>
+				<expertus.environment.sauce.key>b6f5241c-0038-404a-81d6-7bd848b8e56b</expertus.environment.sauce.key>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>sauceCloudbees</id>
+			<activation>
+				<property>
+					<name>sauceCloudbees</name>
+				</property>
+			</activation>
+			<properties>
+				<expertus.environment.type>sauceCloudbees</expertus.environment.type>
+				<expertus.environment.local.test>false</expertus.environment.local.test>
+			</properties>
+		</profile>
+	</profiles>
+ 
     <dependencies>
         <!-- JUnit dependencies -->
         <dependency>
@@ -102,6 +150,12 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
             <artifactId>slf4j-api</artifactId>
         </dependency>
 
+		<!-- Commons dependencies -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
     </dependencies>
  
     <build>
@@ -131,8 +185,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
                         <include>**/*Test.java</include>
                     </includes>
                     <systemPropertyVariables>
-                        <http.proxyHost>106.101.5.61</http.proxyHost>
-                        <http.proxyPort>8080</http.proxyPort>
+						<expertus.environment.type>${expertus.environment.type}</expertus.environment.type>
+						<expertus.environment.local.test>${expertus.environment.local.test}</expertus.environment.local.test>
+						<expertus.environment.sauce.platform>${expertus.environment.sauce.platform}</expertus.environment.sauce.platform>
+						<expertus.environment.browser>${expertus.environment.browser}</expertus.environment.browser>
+						<expertus.environment.sauce.browser.version>${expertus.environment.sauce.browser.version}</expertus.environment.sauce.browser.version>
+						<expertus.environment.sauce.username>${expertus.environment.sauce.username}</expertus.environment.sauce.username>
+						<expertus.environment.sauce.key>${expertus.environment.sauce.key}</expertus.environment.sauce.key>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
@@ -263,6 +322,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
                 <artifactId>slf4j-api</artifactId>
                 <version>1.6.1</version>
             </dependency>
+
+			<!-- Common dependencies -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.1</version>
+			</dependency>
         </dependencies>
     </dependencyManagement>
 
