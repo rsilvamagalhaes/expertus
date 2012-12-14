@@ -4,7 +4,7 @@ import br.com.dextra.expertus.environment.Environment;
 import br.com.dextra.expertus.environment.EnvironmentType;
 import br.com.dextra.expertus.environment.InvalidEnvironmentTypeException;
 import br.com.dextra.expertus.environment.LocalEnvironment;
-import br.com.dextra.expertus.environment.SauceCloudEnvironment;
+import br.com.dextra.expertus.environment.SauceCloudBeesEnvironment;
 import br.com.dextra.expertus.environment.SauceLocalEnvironment;
 
 /**
@@ -21,7 +21,7 @@ public class EnvironmentFactory {
 	 * System property which define environment type. Valid values at
 	 * EnvironmentType.
 	 */
-	protected static String ENVIRONMENT_TYPE_PROPERTY = "expertus.environment.type";
+	public static String ENVIRONMENT_TYPE_PROPERTY = "expertus.environment.type";
 
 	public static Environment createEnvironment(EnvironmentType type) {
 		return getNewEnvironment(type);
@@ -47,8 +47,8 @@ public class EnvironmentFactory {
 			return new LocalEnvironment();
 		case sauceLocal:
 			return new SauceLocalEnvironment();
-		case sauceCloud:
-			return new SauceCloudEnvironment();
+		case sauceCloudbees:
+			return new SauceCloudBeesEnvironment();
 		default:
 			throw new InvalidEnvironmentTypeException(type);
 		}

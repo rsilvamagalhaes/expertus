@@ -11,5 +11,5 @@ import br.com.dextra.expertus.EnvironmentFactory;
  * 
  */
 public enum EnvironmentType {
-	local, sauceLocal, sauceCloud;
+	local, sauceLocal, sauceCloudbees;
 }

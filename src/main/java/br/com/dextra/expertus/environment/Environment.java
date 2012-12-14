@@ -11,26 +11,36 @@ import org.openqa.selenium.WebDriver;
 public abstract class Environment {
 
 	/**
-	 * The system property used to define the environment platform.
+	 * The system property used to define the browser that you want. You can
+	 * check the valid values at https://saucelabs.com/docs/browsers. You should
+	 * configure this system property when you want to use LocalEnvironment or
+	 * SauceLocalEnvironment.
 	 */
-	protected static final String ENVIRONMENT_PLATFORM = "expertus.environment.platform";
+	protected static final String ENVIRONMENT_BROWSER_PROPERTY = "expertus.environment.browser";
 
-	/**
-	 * The system property used to define the browser that you want.
-	 */
-	protected static final String ENVIRONMENT_BROWSER = "expertus.environment.browser";
+	protected String browser;
 
-	/**
-	 * The system property used to define the browser version that you want.
-	 */
-	protected static final String ENVIRONMENT_BROWSER_VERSION = "expertus.environment.browser.version";
-
-	private WebDriver driver;
+	protected WebDriver driver;
 
 	public abstract WebDriver createDriver();
 
 	public WebDriver getDriver() {
 		return this.driver;
 	}
+
+	/**
+	 * Every SauceEnvironment specialization must implements how the properties
+	 * should be read.
+	 */
+	protected abstract void readEnvironmentProperties();
+
+	/**
+	 * This method checks if all properties are not empty.
+	 * 
+	 * @return true if all properties is not empty.
+	 */
+	protected abstract boolean isAllPropertiesOk();
+
+	public abstract String getSessionTestId();
 
 }
