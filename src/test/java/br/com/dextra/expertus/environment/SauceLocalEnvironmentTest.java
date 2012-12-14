@@ -67,10 +67,11 @@ public class SauceLocalEnvironmentTest {
 
 	private void doAsserts(String browser, String browserVersion, String platform, Capabilities sauceBrowserCapabilities) {
 		try {
-			Assert.assertEquals(platform, sauceBrowserCapabilities.getCapability(SauceEnvironment.PLATFORM_CAPABILITY).toString());
+			Assert.assertEquals(platform, sauceBrowserCapabilities.getCapability(SauceEnvironment.PLATFORM_CAPABILITY)
+					.toString());
 			Assert.assertEquals(browser, sauceBrowserCapabilities.getCapability("browserName"));
 			Assert.assertEquals(browserVersion,
-			        sauceBrowserCapabilities.getCapability(SauceEnvironment.BROWSER_VERSION_CAPABILITY));
+					sauceBrowserCapabilities.getCapability(SauceEnvironment.BROWSER_VERSION_CAPABILITY));
 		} finally {
 			if (this.sauceBrowser != null) {
 				this.sauceBrowser.close();

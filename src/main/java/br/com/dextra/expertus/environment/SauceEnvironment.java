@@ -37,8 +37,8 @@ public abstract class SauceEnvironment extends Environment {
 
 	protected boolean isAllPropertiesOk() {
 		return !(StringUtils.isEmpty(this.platform) || StringUtils.isEmpty(this.browser)
-		        || StringUtils.isEmpty(this.browserVersion) || StringUtils.isEmpty(this.sauceUsername) || StringUtils
-		            .isEmpty(this.sauceKey));
+				|| StringUtils.isEmpty(this.browserVersion) || StringUtils.isEmpty(this.sauceUsername) || StringUtils
+					.isEmpty(this.sauceKey));
 	}
 
 }

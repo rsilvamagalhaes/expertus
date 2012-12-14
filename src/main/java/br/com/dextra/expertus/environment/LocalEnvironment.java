@@ -37,7 +37,7 @@ public class LocalEnvironment extends Environment {
 	protected void readEnvironmentProperties() {
 		this.browser = System.getProperty(ENVIRONMENT_BROWSER_PROPERTY);
 
-		if (! this.isAllPropertiesOk()) {
+		if (!this.isAllPropertiesOk()) {
 			throw new IllegalArgumentException("You have to define browser system properties to LocalEnvironment.");
 		}
 	}
