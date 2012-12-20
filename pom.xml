@@ -7,7 +7,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
     <artifactId>expertus</artifactId>
  
     <name>expertus</name>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
  
     <repositories>
@@ -336,7 +336,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
         <repository>
             <id>dextra</id>
             <name>Dextra Repository</name>
-            <url>https://mvn.dextra.com.br/repository/releases/</url>
+            <url>dav:https://mvn.dextra.com.br/repository/releases</url>
         </repository>
     </distributionManagement>
 
