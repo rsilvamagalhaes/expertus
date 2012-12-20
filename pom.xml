@@ -7,24 +7,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
     <artifactId>expertus</artifactId>
  
     <name>expertus</name>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
  
     <repositories>
         <repository>
             <id>central</id>
             <url>http://repo2.maven.org/maven2/</url>
-        </repository>
-        <repository>
-            <id>pyrata</id>
-            <url>http://repo.pyrata.org/release/maven2</url>
-        </repository>
-        <repository>
-            <id>pyrata-snaps</id>
-            <url>http://repo.pyrata.org/release/maven2</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
         </repository>
         <repository>
             <id>saucelabs-repository</id>
@@ -37,19 +26,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
             <id>central</id>
             <url>http://repo2.maven.org/maven2/</url>
         </pluginRepository>
-        <pluginRepository>
-            <id>pyrata</id>
-            <url>http://repo.pyrata.org/release/maven2</url>
-        </pluginRepository>
     </pluginRepositories>
 
     <!-- Specify hard-coded project properties here -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gae.version>1.7.0</gae.version>
-        <gae.plugin.version>0.9.2</gae.plugin.version>
-        <gae.application.version>test</gae.application.version>
-        <mycontainer.version>1.2.37</mycontainer.version>
     </properties>
  
  	<profiles>
@@ -117,31 +98,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
         <dependency>
             <groupId>com.saucelabs</groupId>
             <artifactId>saucerest</artifactId>
-        </dependency>
-
-        <!-- GAE dependencies -->
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-api-labs</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-api-stubs</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-testing</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.kindleit</groupId>
-            <artifactId>gae-runtime</artifactId>
-            <type>pom</type>
-        </dependency>
-
-        <!-- MyContainer dependencies -->
-        <dependency>
-            <groupId>com.googlecode.mycontainer</groupId>
-            <artifactId>mycontainer-gae-web</artifactId>
         </dependency>
 
         <!-- Log dependencies -->
@@ -213,18 +169,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
                     </archive>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>net.kindleit</groupId>
-                <artifactId>maven-gae-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>net.kindleit</groupId>
-                        <artifactId>gae-runtime</artifactId>
-                        <version>${gae.version}</version>
-                        <type>pom</type>
-                    </dependency>
-                </dependencies>
-            </plugin>
         </plugins>
 
         <pluginManagement>
@@ -248,11 +192,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
                     <version>2.4</version>
-                </plugin>
-                <plugin>
-                    <groupId>net.kindleit</groupId>
-                    <artifactId>maven-gae-plugin</artifactId>
-                    <version>${gae.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -284,36 +223,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
                 <groupId>com.saucelabs</groupId>
                 <artifactId>saucerest</artifactId>
                 <version>1.0.2</version>
-            </dependency>
-
-            <!-- GAE dependencies -->
-            <dependency>
-                <groupId>com.google.appengine</groupId>
-                <artifactId>appengine-api-labs</artifactId>
-                <version>${gae.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.appengine</groupId>
-                <artifactId>appengine-api-stubs</artifactId>
-                <version>${gae.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.appengine</groupId>
-                <artifactId>appengine-testing</artifactId>
-                <version>${gae.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>net.kindleit</groupId>
-                <artifactId>gae-runtime</artifactId>
-                <version>${gae.version}</version>
-                <type>pom</type>
-            </dependency>
-
-            <!-- MyContainer dependencies -->
-            <dependency>
-                <groupId>com.googlecode.mycontainer</groupId>
-                <artifactId>mycontainer-gae-web</artifactId>
-                <version>${mycontainer.version}</version>
             </dependency>
 
             <!-- Log dependencies -->
