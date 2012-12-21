@@ -43,7 +43,7 @@ public class PageObject {
 		return this.driver.findElement(By.cssSelector(cssSelector)).getAttribute(attribute);
 	}
 
-	public String getElementContect(String cssSelector) {
+	public String getElementContent(String cssSelector) {
 		return this.driver.findElement(By.cssSelector(cssSelector)).getText();
 	}
 
