@@ -10,9 +10,9 @@ import br.com.dextra.expertus.environment.SauceLocalEnvironment;
 /**
  * A factory to create a new environment. See the EnvironmentType class to get
  * all options.
- * 
+ *
  * @see EnvironmentType
- * 
+ *
  * @author leandro.guimaraes
  */
 public class EnvironmentFactory {
@@ -31,13 +31,14 @@ public class EnvironmentFactory {
 	 * This method create an environment according to the
 	 * ENVIRONMENT_TYPE_PROPERTY system property value. You can check the valid
 	 * values at EnvironmentType.
-	 * 
+	 * The default value is local
+	 *
 	 * @see EnvironmentType
 	 * @return A new instance of an Environment according to to the
 	 *         ENVIRONMENT_TYPE_PROPERTY system property value.
 	 */
 	public static Environment createEnvironment() {
-		String type = System.getProperty(ENVIRONMENT_TYPE_PROPERTY);
+		String type = System.getProperty(ENVIRONMENT_TYPE_PROPERTY)!=null?System.getProperty(ENVIRONMENT_TYPE_PROPERTY):"local";
 		return getNewEnvironment(EnvironmentType.valueOf(type));
 	}
 

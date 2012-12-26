@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 /**
  * This class should be used when you want to run a selenium test using your
  * local webbrowser. This environment support the LocalEnvironmentBrowsers.
- * 
+ *
  * @author leandro.guimaraes
  */
 public class LocalEnvironment extends Environment {
@@ -35,7 +35,7 @@ public class LocalEnvironment extends Environment {
 
 	@Override
 	protected void readEnvironmentProperties() {
-		this.browser = System.getProperty(ENVIRONMENT_BROWSER_PROPERTY);
+		this.browser = System.getProperty(ENVIRONMENT_BROWSER_PROPERTY)!=null?System.getProperty(ENVIRONMENT_BROWSER_PROPERTY):"FIREFOX";
 
 		if (!this.isAllPropertiesOk()) {
 			throw new IllegalArgumentException("You have to define browser system properties to LocalEnvironment.");
