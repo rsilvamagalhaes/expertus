@@ -6,9 +6,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 /**
  * This is an abstract class that represents a test environment at SauceLabs.
- * 
+ *
  * @author leandro.guimaraes
- * 
+ *
  */
 public abstract class SauceEnvironment extends Environment {
 

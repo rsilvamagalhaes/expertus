@@ -14,7 +14,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
  * ENVIRONMENT_SAUCE_BROWSER_PROPERTY,
  * ENVIRONMENT_SAUCE_BROWSER_VERSION_PROPERTY,
  * ENVIRONMENT_SAUCE_USERNAME_PROPERTY and ENVIRONMENT_SAUCE_KEY_PROPERTY).
- * 
+
  * @author leandro.guimaraes
  */
 public class SauceLocalEnvironment extends SauceEnvironment {
@@ -55,7 +55,9 @@ public class SauceLocalEnvironment extends SauceEnvironment {
 		} else {
 			throw new IllegalArgumentException(this.browser + " is not a valid browser.");
 		}
-		desiredCapabilities.setCapability(BROWSER_VERSION_CAPABILITY, this.browserVersion);
+		if (!"chrome".equals(this.browser.trim().toLowerCase())) {
+			desiredCapabilities.setCapability(BROWSER_VERSION_CAPABILITY, this.browserVersion);
+		}
 		desiredCapabilities.setCapability(PLATFORM_CAPABILITY, this.platform);
 
 		StringBuilder sauceURL = new StringBuilder("http://");
