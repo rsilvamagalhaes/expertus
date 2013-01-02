@@ -7,7 +7,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
     <artifactId>expertus</artifactId>
  
     <name>expertus</name>
-    <version>1.0.3</version>
+    <version>1.0.4-SNAPSHOT</version>
     <packaging>jar</packaging>
  
     <repositories>
@@ -241,12 +241,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
         </dependencies>
     </dependencyManagement>
 
-    <distributionManagement>
-        <repository>
-            <id>dextra</id>
-            <name>Dextra Repository</name>
-            <url>dav:https://mvn.dextra.com.br/repository/releases</url>
-        </repository>
-    </distributionManagement>
+	<distributionManagement>
+		<repository>
+			<id>leguimas-repository</id>
+			<url>file:///projects/maven</url>
+		</repository>
+	</distributionManagement>
 
 </project>
