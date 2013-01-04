@@ -23,7 +23,7 @@ public class PageObject {
 	/**
 	 * max number to wait some element
 	 */
-	protected static final int MAX_ATTEMPT_TO_WAIT = 100;
+	protected static final int MAX_ATTEMPT_TO_WAIT = 150;
 
 	protected WebDriver driver;
 
@@ -88,6 +88,7 @@ public class PageObject {
 		while (attempts < MAX_ATTEMPT_TO_WAIT) {
 			try {
 				this.driver.findElement(By.cssSelector(cssSelector));
+				break;
 			} catch (NoSuchElementException nsee) {
 			}
 			attempts++;
