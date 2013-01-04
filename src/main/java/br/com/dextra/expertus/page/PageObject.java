@@ -33,12 +33,10 @@ public class PageObject {
 
 	public void navigateTo(String url) {
 		this.driver.navigate().to(url);
-		this.waitToLoad();
 	}
 
 	public PageObject click(String cssSelector) {
 		this.driver.findElement(By.cssSelector(cssSelector)).click();
-		this.waitToLoad();
 		return this;
 	}
 
