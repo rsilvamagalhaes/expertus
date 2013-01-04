@@ -107,7 +107,7 @@ public class SauceCloudBeesEnvironment extends SauceEnvironment {
 		logger.info("Environment application port: " + this.applicationPortSystemProperty);
 		logger.info("Environment application: " + this.applicationSystemProperty);
 
-		if (this.isAllPropertiesOk()) {
+		if (!this.isAllPropertiesOk()) {
 			throw new IllegalArgumentException("All SauceCloudBeesEnvironment system properties must be defined.");
 		}
 	}

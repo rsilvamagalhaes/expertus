@@ -45,10 +45,10 @@ public class LocalEnvironment extends Environment {
 		this.applicationPortSystemProperty = this.readEnvironmentPortProperty();
 		this.applicationSystemProperty = this.readEnvironmentApplicationProperty();
 
-		logger.debug("Environment browser: " + this.browser);
-		logger.debug("Environment application host: " + this.applicationHostSystemProperty);
-		logger.debug("Environment application port: " + this.applicationPortSystemProperty);
-		logger.debug("Environment application: " + this.applicationSystemProperty);
+		logger.info("Environment browser: " + this.browser);
+		logger.info("Environment application host: " + this.applicationHostSystemProperty);
+		logger.info("Environment application port: " + this.applicationPortSystemProperty);
+		logger.info("Environment application: " + this.applicationSystemProperty);
 
 		if (!this.isAllPropertiesOk()) {
 			throw new IllegalArgumentException("You have to define browser system properties to LocalEnvironment.");

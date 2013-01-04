@@ -1,7 +1,6 @@
 package br.com.dextra.expertus.environment;
 
 import org.apache.commons.lang.StringUtils;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 /**
@@ -23,12 +22,6 @@ public abstract class SauceEnvironment extends Environment {
 	protected String sauceUsername;
 
 	protected String sauceKey;
-
-	@Override
-	public WebDriver createDriver() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public String getSessionTestId() {
