@@ -98,14 +98,14 @@ public class SauceCloudBeesEnvironment extends SauceEnvironment {
 		this.applicationPortSystemProperty = System.getenv(ENVIRONMENT_SAUCE_ONDEMAND_PORT_PROPERTY);
 		this.applicationSystemProperty = this.readEnvironmentApplicationProperty();
 
-		logger.debug("Environment platform: " + this.platform);
-		logger.debug("Environment browser: " + this.browser);
-		logger.debug("Environment browser version: " + this.browserVersion);
-		logger.debug("Environment sauce username: " + this.sauceUsername);
-		logger.debug("Environment sauce key: " + this.sauceKey);
-		logger.debug("Environment application host: " + this.applicationHostSystemProperty);
-		logger.debug("Environment application port: " + this.applicationPortSystemProperty);
-		logger.debug("Environment application: " + this.applicationSystemProperty);
+		logger.info("Environment platform: " + this.platform);
+		logger.info("Environment browser: " + this.browser);
+		logger.info("Environment browser version: " + this.browserVersion);
+		logger.info("Environment sauce username: " + this.sauceUsername);
+		logger.info("Environment sauce key: " + this.sauceKey);
+		logger.info("Environment application host: " + this.applicationHostSystemProperty);
+		logger.info("Environment application port: " + this.applicationPortSystemProperty);
+		logger.info("Environment application: " + this.applicationSystemProperty);
 
 		if (this.isAllPropertiesOk()) {
 			throw new IllegalArgumentException("All SauceCloudBeesEnvironment system properties must be defined.");
