@@ -1,6 +1,12 @@
 package br.com.dextra.expertus.environment;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,7 +66,22 @@ public class SauceCloudBeesEnvironment extends SauceEnvironment {
 
 	@Override
 	public WebDriver createDriver() {
-		return null;
+		this.readEnvironmentProperties();
+
+		DesiredCapabilities desiredCapabilities = new DesiredCapabilities(this.browser, this.browserVersion,
+				Platform.valueOf(this.platform));
+
+		StringBuilder sauceURL = new StringBuilder("http://");
+		sauceURL.append(this.sauceUsername);
+		sauceURL.append(":");
+		sauceURL.append(this.sauceKey);
+		sauceURL.append("@ondemand.saucelabs.com:80/wd/hub");
+
+		try {
+			return new RemoteWebDriver(new URL(sauceURL.toString()), desiredCapabilities);
+		} catch (MalformedURLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**
