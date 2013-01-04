@@ -43,13 +43,32 @@ public class SauceLocalEnvironmentTest {
 	@Test
 	public void testCreateLinuxChrome() {
 		String browser = "chrome";
-		//this property should be not setted on chrome + linux env @ saucelabs
+		// this property should be not setted on chrome + linux env @ saucelabs
 		String browserVersion = "0";
 		String platform = Platform.LINUX.toString();
 
 		this.setSystemPropertiesValues(browser, browserVersion, platform.toString());
 		Capabilities sauceBrowserCapabilities = this.createBrowserAndGetCapabilities();
-		this.doAsserts(browser,platform, sauceBrowserCapabilities);
+		this.doAsserts(browser, platform, sauceBrowserCapabilities);
+	}
+
+	@Test
+	public void testApplicationUrl() {
+		String applicationHost = "192.168.1.1";
+		String applicationPort = "445";
+		String applicationId = "myApplication";
+
+		System.setProperty(Environment.ENVIRONMENT_HOST, applicationHost);
+		System.setProperty(Environment.ENVIRONMENT_PORT, applicationPort);
+		System.setProperty(Environment.ENVIRONMENT_APPLICATION, applicationId);
+
+		this.setSystemPropertiesValues("firefox", "17", Platform.LINUX.toString());
+
+		Environment sauceLocalEnvironment = EnvironmentFactory.createEnvironment();
+		sauceLocalEnvironment.readEnvironmentProperties();
+
+		Assert.assertEquals(applicationHost + ":" + applicationPort + "/" + applicationId,
+				sauceLocalEnvironment.getEnvironmentUrlBase());
 	}
 
 	private void setSystemPropertiesValues(String browser, String browserVersion, String platform) {
@@ -79,6 +98,7 @@ public class SauceLocalEnvironmentTest {
 			}
 		}
 	}
+
 	private void doAsserts(String browser, String platform, Capabilities sauceBrowserCapabilities) {
 		try {
 			Assert.assertEquals(platform, sauceBrowserCapabilities.getCapability(SauceEnvironment.PLATFORM_CAPABILITY)

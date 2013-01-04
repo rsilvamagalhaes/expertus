@@ -1,6 +1,7 @@
 package br.com.dextra.expertus.page;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -12,7 +13,17 @@ import org.openqa.selenium.WebElement;
  */
 public class PageObject {
 
-	private static final int DEFAULT_SLEEP_TIME = 2000;
+	protected static final int DEFAULT_SLEEP_TIME = 2000;
+
+	/**
+	 * time to wait to check element
+	 */
+	protected static final int TIME_TO_WAIT = 100;
+
+	/**
+	 * max number to wait some element
+	 */
+	protected static final int MAX_ATTEMPT_TO_WAIT = 100;
 
 	protected WebDriver driver;
 
@@ -71,4 +82,23 @@ public class PageObject {
 		}
 	}
 
+	protected void waitForElement(String cssSelector) {
+		this.waitToLoad(TIME_TO_WAIT);
+
+		int attempts = 1;
+
+		while (attempts < MAX_ATTEMPT_TO_WAIT) {
+			try {
+				this.driver.findElement(By.cssSelector(cssSelector));
+			} catch (NoSuchElementException nsee) {
+			}
+			attempts++;
+
+			this.waitToLoad(TIME_TO_WAIT);
+		}
+
+		if (attempts >= MAX_ATTEMPT_TO_WAIT) {
+			throw new TimedOutException(cssSelector + " element did not find.");
+		}
+	}
 }

@@ -1,6 +1,8 @@
 package br.com.dextra.expertus.environment;
 
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class should be used when you want to run a test on SauceLabs
@@ -11,6 +13,8 @@ import org.openqa.selenium.WebDriver;
  * @author leandro.guimaraes
  */
 public class SauceCloudBeesEnvironment extends SauceEnvironment {
+
+	private static final Logger logger = LoggerFactory.getLogger(SauceCloudBeesEnvironment.class);
 
 	/**
 	 * This is the value of environment property. It will be set by cloudbees
@@ -42,6 +46,18 @@ public class SauceCloudBeesEnvironment extends SauceEnvironment {
 	 */
 	private static final String ENVIRONMENT_SAUCE_KEY_PROPERTY = "SAUCE_API_KEY";
 
+	/**
+	 * The system property used to define the application host on saucelabs.com.
+	 * It will be set by cloudbees platform.
+	 */
+	private static final String ENVIRONMENT_SAUCE_ONDEMAND_HOST_PROPERTY = "SAUCE_ONDEMAND_HOST";
+
+	/**
+	 * The system property used to define the application port on saucelabs.com.
+	 * It will be set by cloudbees platform.
+	 */
+	private static final String ENVIRONMENT_SAUCE_ONDEMAND_PORT_PROPERTY = "SAUCE_ONDEMAND_PORT";
+
 	@Override
 	public WebDriver createDriver() {
 		return null;
@@ -57,6 +73,18 @@ public class SauceCloudBeesEnvironment extends SauceEnvironment {
 		this.browserVersion = System.getenv(ENVIRONMENT_SAUCE_BROWSER_VERSION_PROPERTY);
 		this.sauceUsername = System.getenv(ENVIRONMENT_SAUCE_USERNAME_PROPERTY);
 		this.sauceKey = System.getenv(ENVIRONMENT_SAUCE_KEY_PROPERTY);
+		this.applicationHostSystemProperty = System.getenv(ENVIRONMENT_SAUCE_ONDEMAND_HOST_PROPERTY);
+		this.applicationPortSystemProperty = System.getenv(ENVIRONMENT_SAUCE_ONDEMAND_PORT_PROPERTY);
+		this.applicationSystemProperty = this.readEnvironmentApplicationProperty();
+
+		logger.debug("Environment platform: " + this.platform);
+		logger.debug("Environment browser: " + this.browser);
+		logger.debug("Environment browser version: " + this.browserVersion);
+		logger.debug("Environment sauce username: " + this.sauceUsername);
+		logger.debug("Environment sauce key: " + this.sauceKey);
+		logger.debug("Environment application host: " + this.applicationHostSystemProperty);
+		logger.debug("Environment application port: " + this.applicationPortSystemProperty);
+		logger.debug("Environment application: " + this.applicationSystemProperty);
 
 		if (this.isAllPropertiesOk()) {
 			throw new IllegalArgumentException("All SauceCloudBeesEnvironment system properties must be defined.");

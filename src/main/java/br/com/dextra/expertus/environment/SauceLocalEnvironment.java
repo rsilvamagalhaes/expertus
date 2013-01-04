@@ -6,6 +6,8 @@ import java.net.URL;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class should be used when you want to run a test on SauceLabs
@@ -14,10 +16,12 @@ import org.openqa.selenium.remote.RemoteWebDriver;
  * ENVIRONMENT_SAUCE_BROWSER_PROPERTY,
  * ENVIRONMENT_SAUCE_BROWSER_VERSION_PROPERTY,
  * ENVIRONMENT_SAUCE_USERNAME_PROPERTY and ENVIRONMENT_SAUCE_KEY_PROPERTY).
-
+ * 
  * @author leandro.guimaraes
  */
 public class SauceLocalEnvironment extends SauceEnvironment {
+
+	private static final Logger logger = LoggerFactory.getLogger(SauceLocalEnvironment.class);
 
 	/**
 	 * The system property used to define the environment platform. You can
@@ -83,6 +87,18 @@ public class SauceLocalEnvironment extends SauceEnvironment {
 		this.browserVersion = System.getProperty(ENVIRONMENT_SAUCE_BROWSER_VERSION_PROPERTY);
 		this.sauceUsername = System.getProperty(ENVIRONMENT_SAUCE_USERNAME_PROPERTY);
 		this.sauceKey = System.getProperty(ENVIRONMENT_SAUCE_KEY_PROPERTY);
+		this.applicationHostSystemProperty = this.readEnvironmentHostProperty();
+		this.applicationPortSystemProperty = this.readEnvironmentPortProperty();
+		this.applicationSystemProperty = this.readEnvironmentApplicationProperty();
+
+		logger.debug("Environment platform: " + this.platform);
+		logger.debug("Environment browser: " + this.browser);
+		logger.debug("Environment browser version: " + this.browserVersion);
+		logger.debug("Environment sauce username: " + this.sauceUsername);
+		logger.debug("Environment sauce key: " + this.sauceKey);
+		logger.debug("Environment application host: " + this.applicationHostSystemProperty);
+		logger.debug("Environment application port: " + this.applicationPortSystemProperty);
+		logger.debug("Environment application: " + this.applicationSystemProperty);
 
 		if (!this.isAllPropertiesOk()) {
 			throw new IllegalArgumentException("You have to define all SauceLocalEnvironment system properties.");

@@ -4,14 +4,18 @@ import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class should be used when you want to run a selenium test using your
  * local webbrowser. This environment support the LocalEnvironmentBrowsers.
- *
+ * 
  * @author leandro.guimaraes
  */
 public class LocalEnvironment extends Environment {
+
+	private static final Logger logger = LoggerFactory.getLogger(LocalEnvironment.class);
 
 	@Override
 	public WebDriver createDriver() {
@@ -35,7 +39,16 @@ public class LocalEnvironment extends Environment {
 
 	@Override
 	protected void readEnvironmentProperties() {
-		this.browser = System.getProperty(ENVIRONMENT_BROWSER_PROPERTY)!=null?System.getProperty(ENVIRONMENT_BROWSER_PROPERTY):"FIREFOX";
+		this.browser = System.getProperty(ENVIRONMENT_BROWSER_PROPERTY) != null ? System
+				.getProperty(ENVIRONMENT_BROWSER_PROPERTY) : "FIREFOX";
+		this.applicationHostSystemProperty = this.readEnvironmentHostProperty();
+		this.applicationPortSystemProperty = this.readEnvironmentPortProperty();
+		this.applicationSystemProperty = this.readEnvironmentApplicationProperty();
+
+		logger.debug("Environment browser: " + this.browser);
+		logger.debug("Environment application host: " + this.applicationHostSystemProperty);
+		logger.debug("Environment application port: " + this.applicationPortSystemProperty);
+		logger.debug("Environment application: " + this.applicationSystemProperty);
 
 		if (!this.isAllPropertiesOk()) {
 			throw new IllegalArgumentException("You have to define browser system properties to LocalEnvironment.");
