@@ -72,7 +72,7 @@ public class PageObject {
 		this.waitToLoad(DEFAULT_SLEEP_TIME);
 	}
 
-	protected void waitToLoad(int timeToSleep) {
+	public void waitToLoad(int timeToSleep) {
 		try {
 			Thread.sleep(timeToSleep);
 		} catch (InterruptedException e) {
@@ -80,7 +80,7 @@ public class PageObject {
 		}
 	}
 
-	protected void waitForElement(String cssSelector) {
+	public void waitForElement(String cssSelector) {
 		this.waitToLoad(TIME_TO_WAIT);
 
 		int attempts = 1;
