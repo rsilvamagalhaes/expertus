@@ -75,7 +75,7 @@ public class SauceLocalEnvironmentTest {
 					sauceBrowserCapabilities.getCapability(SauceEnvironment.BROWSER_VERSION_CAPABILITY));
 		} finally {
 			if (this.sauceBrowser != null) {
-				this.sauceBrowser.close();
+				this.sauceBrowser.quit();
 			}
 		}
 	}
@@ -87,7 +87,7 @@ public class SauceLocalEnvironmentTest {
 			Assert.assertEquals(browser, sauceBrowserCapabilities.getCapability("browserName"));
 		} finally {
 			if (this.sauceBrowser != null) {
-				this.sauceBrowser.close();
+				this.sauceBrowser.quit();
 			}
 		}
 	}

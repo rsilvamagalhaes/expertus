@@ -25,7 +25,7 @@ public class LocalEnvironmentTest {
 			System.setProperty(Environment.ENVIRONMENT_BROWSER_PROPERTY, LocalEnvironmentBrowser.FIREFOX.toString());
 			WebDriver firefoxDriver = EnvironmentFactory.createEnvironment().createDriver();
 			Assert.assertTrue(firefoxDriver instanceof FirefoxDriver);
-			firefoxDriver.close();
+			firefoxDriver.quit();
 		}
 	}
 
