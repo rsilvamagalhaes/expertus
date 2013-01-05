@@ -87,18 +87,12 @@ public class SauceLocalEnvironment extends SauceEnvironment {
 		this.browserVersion = System.getProperty(ENVIRONMENT_SAUCE_BROWSER_VERSION_PROPERTY);
 		this.sauceUsername = System.getProperty(ENVIRONMENT_SAUCE_USERNAME_PROPERTY);
 		this.sauceKey = System.getProperty(ENVIRONMENT_SAUCE_KEY_PROPERTY);
-		this.applicationHostSystemProperty = this.readEnvironmentHostProperty();
-		this.applicationPortSystemProperty = this.readEnvironmentPortProperty();
-		this.applicationSystemProperty = this.readEnvironmentApplicationProperty();
 
 		logger.info("Environment platform: " + this.platform);
 		logger.info("Environment browser: " + this.browser);
 		logger.info("Environment browser version: " + this.browserVersion);
 		logger.info("Environment sauce username: " + this.sauceUsername);
 		logger.info("Environment sauce key: " + this.sauceKey);
-		logger.info("Environment application host: " + this.applicationHostSystemProperty);
-		logger.info("Environment application port: " + this.applicationPortSystemProperty);
-		logger.info("Environment application: " + this.applicationSystemProperty);
 
 		if (!this.isAllPropertiesOk()) {
 			throw new IllegalArgumentException("You have to define all SauceLocalEnvironment system properties.");

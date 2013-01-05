@@ -52,25 +52,6 @@ public class SauceLocalEnvironmentTest {
 		this.doAsserts(browser, platform, sauceBrowserCapabilities);
 	}
 
-	@Test
-	public void testApplicationUrl() {
-		String applicationHost = "192.168.1.1";
-		String applicationPort = "445";
-		String applicationId = "myApplication";
-
-		System.setProperty(Environment.ENVIRONMENT_HOST, applicationHost);
-		System.setProperty(Environment.ENVIRONMENT_PORT, applicationPort);
-		System.setProperty(Environment.ENVIRONMENT_APPLICATION, applicationId);
-
-		this.setSystemPropertiesValues("firefox", "17", Platform.LINUX.toString());
-
-		Environment sauceLocalEnvironment = EnvironmentFactory.createEnvironment();
-		sauceLocalEnvironment.readEnvironmentProperties();
-
-		Assert.assertEquals(applicationHost + ":" + applicationPort + "/" + applicationId,
-				sauceLocalEnvironment.getEnvironmentUrlBase());
-	}
-
 	private void setSystemPropertiesValues(String browser, String browserVersion, String platform) {
 		System.setProperty(Environment.ENVIRONMENT_BROWSER_PROPERTY, browser);
 		System.setProperty(SauceLocalEnvironment.ENVIRONMENT_SAUCE_BROWSER_VERSION_PROPERTY, browserVersion);

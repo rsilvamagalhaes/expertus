@@ -29,28 +29,4 @@ public class LocalEnvironmentTest {
 		}
 	}
 
-	@Test
-	public void testApplicationUrlDefaultValues() {
-		Environment localEnvironment = EnvironmentFactory.createEnvironment();
-		localEnvironment.readEnvironmentProperties();
-
-		Assert.assertEquals("localhost:8080", localEnvironment.getEnvironmentUrlBase());
-	}
-
-	@Test
-	public void testApplicationUrl() {
-		String applicationHost = "192.168.1.1";
-		String applicationPort = "445";
-		String applicationId = "myApplication";
-
-		System.setProperty(Environment.ENVIRONMENT_HOST, applicationHost);
-		System.setProperty(Environment.ENVIRONMENT_PORT, applicationPort);
-		System.setProperty(Environment.ENVIRONMENT_APPLICATION, applicationId);
-
-		Environment localEnvironment = EnvironmentFactory.createEnvironment();
-		localEnvironment.readEnvironmentProperties();
-
-		Assert.assertEquals(applicationHost + ":" + applicationPort + "/" + applicationId,
-				localEnvironment.getEnvironmentUrlBase());
-	}
 }

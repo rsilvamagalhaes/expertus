@@ -41,14 +41,8 @@ public class LocalEnvironment extends Environment {
 	protected void readEnvironmentProperties() {
 		this.browser = System.getProperty(ENVIRONMENT_BROWSER_PROPERTY) != null ? System
 				.getProperty(ENVIRONMENT_BROWSER_PROPERTY) : "FIREFOX";
-		this.applicationHostSystemProperty = this.readEnvironmentHostProperty();
-		this.applicationPortSystemProperty = this.readEnvironmentPortProperty();
-		this.applicationSystemProperty = this.readEnvironmentApplicationProperty();
 
 		logger.info("Environment browser: " + this.browser);
-		logger.info("Environment application host: " + this.applicationHostSystemProperty);
-		logger.info("Environment application port: " + this.applicationPortSystemProperty);
-		logger.info("Environment application: " + this.applicationSystemProperty);
 
 		if (!this.isAllPropertiesOk()) {
 			throw new IllegalArgumentException("You have to define browser system properties to LocalEnvironment.");
