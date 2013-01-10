@@ -43,4 +43,9 @@ public abstract class Environment {
 
 	public abstract String getSessionTestId();
 
+	/**
+	 * This method define a session name to identify your test.
+	 */
+	public abstract void setSessionName(String sessionName);
+
 }

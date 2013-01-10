@@ -7,7 +7,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
     <artifactId>expertus</artifactId>
  
     <name>expertus</name>
-    <version>1.0.12-SNAPSHOT</version>
+    <version>1.0.12</version>
     <packaging>jar</packaging>
  
     <repositories>
@@ -244,7 +244,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 	<distributionManagement>
 		<repository>
 			<id>leguimas-repository</id>
-			<url>file:///projects/maven</url>
+			<url>file://../maven</url>
 		</repository>
 	</distributionManagement>
 

@@ -54,4 +54,9 @@ public class LocalEnvironment extends Environment {
 		return StringUtils.isNotEmpty(this.browser);
 	}
 
+	@Override
+	public void setSessionName(String sessionName) {
+		logger.info("Session name: " + sessionName);
+	}
+
 }
