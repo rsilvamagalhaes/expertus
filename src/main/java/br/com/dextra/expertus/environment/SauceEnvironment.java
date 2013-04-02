@@ -1,10 +1,9 @@
 package br.com.dextra.expertus.environment;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.saucelabs.saucerest.SauceREST;
@@ -47,11 +46,7 @@ public abstract class SauceEnvironment extends Environment {
 		Map<String, Object> mapInfo = new HashMap<String, Object>();
 		mapInfo.put("name", sessionName);
 
-		try {
-			sauceRest.updateJobInfo(this.getSessionTestId(), mapInfo);
-		} catch (IOException e) {
-			throw new RuntimeException("Unexpected exception while updating job info: " + e.getMessage(), e);
-		}
+		sauceRest.updateJobInfo(this.getSessionTestId(), mapInfo);
 	}
 
 }

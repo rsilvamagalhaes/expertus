@@ -15,7 +15,6 @@ public class LocalEnvironmentTest {
 
 	public LocalEnvironmentTest() {
 		runTests = StringUtils.isNotEmpty(System.getProperty("expertus.environment.local.test"));
-
 		System.setProperty(EnvironmentFactory.ENVIRONMENT_TYPE_PROPERTY, EnvironmentType.local.toString());
 	}
 

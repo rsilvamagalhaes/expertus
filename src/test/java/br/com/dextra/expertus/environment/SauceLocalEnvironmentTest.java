@@ -21,12 +21,12 @@ public class SauceLocalEnvironmentTest {
 	@Test
 	public void testCreateLinuxFirefox() {
 		String browser = "firefox";
-		String browserVersion = "17";
+		String browserVersion = "17.0.1";
 		String platform = Platform.LINUX.toString();
 
 		this.setSystemPropertiesValues(browser, browserVersion, platform.toString());
 		Capabilities sauceBrowserCapabilities = this.createBrowserAndGetCapabilities();
-		this.doAsserts(browser, browserVersion + ".0", platform, sauceBrowserCapabilities);
+		this.doAsserts(browser, browserVersion, platform, sauceBrowserCapabilities);
 	}
 
 	@Test
