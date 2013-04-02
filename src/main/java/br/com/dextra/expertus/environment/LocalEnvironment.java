@@ -1,9 +1,12 @@
 package br.com.dextra.expertus.environment;
 
 import org.apache.commons.lang3.StringUtils;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,15 +24,28 @@ public class LocalEnvironment extends Environment {
 	public WebDriver createDriver() {
 		this.readEnvironmentProperties();
 
+		WebDriver driver = null;
+
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		Proxy proxy = new Proxy();
+		proxy.setAutodetect(false);
+		proxy.setNoProxy("localhost");
+		capabilities.setCapability(CapabilityType.PROXY, proxy);
+
 		LocalEnvironmentBrowser localBrowser = LocalEnvironmentBrowser.valueOf(this.browser);
+
 		switch (localBrowser) {
 		case FIREFOX:
-			return new FirefoxDriver();
+			driver = new FirefoxDriver(capabilities);
+			break;
 		case CHROME:
-			return new ChromeDriver();
+			driver = new ChromeDriver(capabilities);
+			break;
 		default:
 			throw new IllegalArgumentException(this.browser + " is not supported by LocalEnvironment.");
 		}
+
+		return driver;
 	}
 
 	@Override
