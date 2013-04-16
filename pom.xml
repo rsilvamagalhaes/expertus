@@ -12,18 +12,18 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
  
     <repositories>
         <repository>
-            <id>central</id>
+            <id>mirror-central</id>
             <url>https://dextranet.dextra.com.br/nexus/content/repositories/mirror-central/</url>
         </repository>
         <repository>
-            <id>saucelabs-repository</id>
+            <id>mirror-saucelabs</id>
             <url>https://dextranet.dextra.com.br/nexus/content/repositories/mirror-saucelabs/</url>
         </repository>
     </repositories>
  
     <pluginRepositories>
         <pluginRepository>
-            <id>central</id>
+            <id>mirror-central</id>
             <url>https://dextranet.dextra.com.br/nexus/content/repositories/mirror-central/</url>
         </pluginRepository>
     </pluginRepositories>
