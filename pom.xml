@@ -13,18 +13,18 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
     <repositories>
         <repository>
             <id>central</id>
-            <url>http://repo2.maven.org/maven2/</url>
+            <url>https://dextranet.dextra.com.br/nexus/content/repositories/mirror-central/</url>
         </repository>
         <repository>
             <id>saucelabs-repository</id>
-            <url>https://repository-saucelabs.forge.cloudbees.com/release</url>
+            <url>https://dextranet.dextra.com.br/nexus/content/repositories/mirror-saucelabs/</url>
         </repository>
     </repositories>
  
     <pluginRepositories>
         <pluginRepository>
             <id>central</id>
-            <url>http://repo2.maven.org/maven2/</url>
+            <url>https://dextranet.dextra.com.br/nexus/content/repositories/mirror-central/</url>
         </pluginRepository>
     </pluginRepositories>
 
@@ -235,8 +235,8 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 
     <distributionManagement>
         <repository>
-            <id>leguimas-repository</id>
-            <url>file:///projects/maven</url>
+            <id>dextra-public-release</id>
+            <url>https://dextranet.dextra.com.br/nexus/content/repositories/dextra-public-release/</url>
         </repository>
     </distributionManagement>
 
