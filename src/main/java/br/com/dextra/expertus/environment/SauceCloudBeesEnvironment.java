@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
  * environment at a cloudbees environment. When you configure your jenkins
  * instance you have to turn on SauceLabs plugin and select the WebDriver
  * information.
- * 
+ *
  * @author leandro.guimaraes
  */
 public class SauceCloudBeesEnvironment extends SauceEnvironment {
@@ -57,7 +57,7 @@ public class SauceCloudBeesEnvironment extends SauceEnvironment {
 		this.readEnvironmentProperties();
 
 		DesiredCapabilities desiredCapabilities = new DesiredCapabilities(this.browser, this.browserVersion,
-				Platform.valueOf(this.platform));
+				Platform.valueOf(this.platform.toUpperCase()));
 
 		StringBuilder sauceURL = new StringBuilder("http://");
 		sauceURL.append(this.sauceUsername);

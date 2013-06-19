@@ -5,11 +5,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.com.dextra</groupId>
     <artifactId>expertus</artifactId>
- 
+
     <name>expertus</name>
-    <version>1.0.15-SNAPSHOT</version>
+    <version>1.0.14.1</version>
     <packaging>jar</packaging>
- 
+
     <repositories>
         <repository>
             <id>mirror-central</id>
@@ -20,7 +20,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
             <url>https://dextranet.dextra.com.br/nexus/content/repositories/mirror-saucelabs/</url>
         </repository>
     </repositories>
- 
+
     <pluginRepositories>
         <pluginRepository>
             <id>mirror-central</id>
@@ -32,7 +32,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
- 
+
      <profiles>
         <profile>
             <id>local</id>
@@ -80,7 +80,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
             </properties>
         </profile>
     </profiles>
- 
+
     <dependencies>
         <!-- JUnit dependencies -->
         <dependency>
@@ -113,7 +113,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
         </dependency>
 
     </dependencies>
- 
+
     <build>
         <finalName>expertus</finalName>
         <plugins>
