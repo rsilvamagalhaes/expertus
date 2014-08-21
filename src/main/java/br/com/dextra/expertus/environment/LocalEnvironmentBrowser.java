@@ -6,5 +6,5 @@ package br.com.dextra.expertus.environment;
  * @author leandro.guimaraes
  */
 public enum LocalEnvironmentBrowser {
-	FIREFOX, CHROME;
+	FIREFOX, CHROME, PHANTOM;
 }

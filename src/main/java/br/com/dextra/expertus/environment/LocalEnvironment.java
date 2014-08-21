@@ -41,6 +41,13 @@ public class LocalEnvironment extends Environment {
 		case CHROME:
 			driver = new ChromeDriver(capabilities);
 			break;
+//		case PHANTOM:
+//			capabilities.setJavascriptEnabled(true);
+//			capabilities.setCapability("takesScreenshot", false);
+//			capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "target/phantomjs/phantomjs");
+//			driver = new PhantomJSDriver(capabilities);
+//			driver.manage().window().setSize(new Dimension(1600, 900));
+//			break;
 		default:
 			throw new IllegalArgumentException(this.browser + " is not supported by LocalEnvironment.");
 		}

@@ -27,5 +27,14 @@ public class LocalEnvironmentTest {
 			firefoxDriver.quit();
 		}
 	}
-
+//	
+//	@Test
+//	public void testCreatePhantomBrowser() {
+//		if (runTests) {
+//			System.setProperty(Environment.ENVIRONMENT_BROWSER_PROPERTY, LocalEnvironmentBrowser.PHANTOM.toString());
+//			WebDriver phantomDriver = EnvironmentFactory.createEnvironment().createDriver();
+//			Assert.assertTrue(phantomDriver instanceof PhantomJSDriver);
+//			phantomDriver.quit();
+//		}
+//	}
 }
